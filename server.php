@@ -1,13 +1,26 @@
 <?php
-$param = isset($_GET['index']) ? $_GET['index'] : NULL;
+
 $list = file_get_contents(__DIR__.'/list.json');
+$newTask = isset($_POST['newtask']) ? $_POST['newtask'] : NULL;
 
-$list = json_decode($list, true);
 
-if($param) {
-    $list = $list[$param];
+if($newTask !== NULL){
+    $list = json_decode($list, true);
+    $list[] = [
+        "text" => $newTask,
+        "done" => false
+    ];
+    $list = json_encode($list);
+ file_put_contents(__DIR__.'/list.json', $list);
 }
-$list = json_encode($list);
+
+
+if($param !== NULL) {
+    $list = json_decode($list, true);
+    $list = $list[$param];
+    $list = json_encode($list);
+}
+
 
 header('Content-Type: application/json');
 echo $list;

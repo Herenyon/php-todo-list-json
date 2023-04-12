@@ -14,10 +14,16 @@
 
     <div id="app">
         <h1>list</h1>
+        <form @submit.prevent="addTask">
+
+            <input type="text" placeholder="new todo" v-model="newTask">
+            <button type="submit">Add</button>
+        </form>
         <ul>
             <li v-for="todo in list">
                 <div>
                     <h3>{{ todo.text }}</h3>
+
                 </div>
             </li>
         </ul>
