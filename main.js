@@ -22,7 +22,16 @@ createApp({
                 .then((response) => {
                     this.list = response.data;
                 })
-        }
+        },
+
+        // doneItem() {
+        //     let element = document.getElementById("list-item");
+        //     for (let i = 0; i < this.list[i]; i++) {
+        //         if (this.list.done === true) {
+        //             element.classList.add("done-task")
+        //         }
+        //     }
+        // }
     },
     created() {
         axios.get('server.php')

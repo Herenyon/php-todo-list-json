@@ -21,9 +21,11 @@
         </form>
         <ul>
             <li v-for="todo in list">
-                <div>
+                <div v-if="todo.done === true">
+                    <h3 class="done-task">{{ todo.text }}</h3>
+                </div>
+                <div v-else>
                     <h3>{{ todo.text }}</h3>
-
                 </div>
             </li>
         </ul>
